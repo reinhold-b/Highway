@@ -1,0 +1,47 @@
+span {
+  z-index: -1000;
+  outline-style: none;
+  pointer-events: none;
+}
+
+svg {
+  outline-style: none;
+}
+
+.smallCheck {
+  content: url("../svg/check14.svg");
+}
+
+.smallBin {
+  content: url("../svg/bin14.svg");
+  vertical-align: sub;
+}
+
+.smallPen {
+  content: url("../svg/pencil16.svg");
+  vertical-align: text-bottom;
+}
+
+.cross {
+  content: url("../svg/cross.svg");
+  vertical-align: -1px;
+}
+
+.maximize {
+  content: url("../svg/maximize.svg");
+  vertical-align: -1px;
+}
+
+.minimize {
+  content: url("../svg/minimize.svg");
+  vertical-align: -1px;
+}
+
+.star {
+  content: url("../svg/Star\ 1.svg");
+}
+
+.moon {
+  content: url("../svg/goal.svg");
+  vertical-align: -3px;
+}

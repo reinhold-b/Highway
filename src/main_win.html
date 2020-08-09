@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="
+                              script-src 'self';
+                              connect-src 'none'; 
+                              style-src 'self';
+                              default-src 'self';">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Highway</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../style/css/icons.css">
+    
+
+    <!-- UI  -->
+    <script src="../ui/leftPanelUI.js"></script>
+    <script src="../ui/rightPanelUI.js"></script>
+    <script src="../ui/placeholders.js"></script>
+    <script src="../ui/progressBarController.js"></script>
+
+    <!-- helper functions -->
+    <script src="../functionality/projectListManager.js"></script>
+    <script src="../functionality/infoListManager.js"></script>
+
+    <script src="../functionality/getFuncs.js"></script>
+    <script src="../functionality/setFuncs.js"></script>
+
+    <script src="../ui/menu/menuHandler.js"></script>
+
+  </head>
+  <body>
+    <div id="menubar">
+      <nav>
+        <div id="titleShown">
+          Highway
+        </div>
+        <div id="buttons">
+          <div id="minimize">
+            <span class="minimize"></span>
+          </div>
+          <div id="maximize">
+            <span class="maximize"></span>
+          </div>
+          <div id="close">
+            <span class="cross"></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div id="left-panel">
+
+      <div id="container-left-panel-content">
+        <h2 id="title">Highway</h2>
+        
+
+        <ul id="todo-table">
+          
+        </ul>
+
+        <div class="flexflex">
+          <input type="text" id="newProjectInput" placeholder="New Project" spellcheck="false"><br>
+          <button id="addBtn">+</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="right-panel-todo-info">
+      <div id="topMenu">
+        <p id="streak"></p>
+        <p>mph</p>
+        <progress value="0" max="5" id="dailyProgress">
+      </div>
+      <div id="todo-content">
+        <ul id="todo-info-table">
+      
+        </ul>
+      </div>
+    </div>
+
+    <div id="infoForm">
+      <input type="text" id="infoInput" placeholder="New Task" spellcheck="false">
+      <button id="infoAddBtn">Add</button>
+    </div>
+  </body>
+</html>
