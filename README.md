@@ -6,7 +6,7 @@ Do you need a simple task manager for your projects, that doesn't distract you w
 Get the latest version of Highway [here](https://github.com/reinhold-b/Highway/releases).\
 Currently Highway is only available for Windows, but this will change soon!
 
-![Highway](/assets/git_images/highway_screen.png)
+![Highway](/assets/git_images/highway_screen2.png)
 
 ## Contribute
 Do you want to contribute, report a bug or introduce a new feature? Sure why not!\
