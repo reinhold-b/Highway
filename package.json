@@ -1,7 +1,7 @@
 {
   "name": "highway",
   "productName": "Highway",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A fast, lightweight and simple todo manager!",
   "main": "src/index.js",
   "scripts": {
