@@ -32,10 +32,7 @@ function removeOne(node) {
   var infoTable = document.getElementById("todo-info-table");
   infoTable.removeChild(node);
 
-  if (document.getElementById("dailyProgress").value == getBarMaximum()) {
-    document.getElementById("streak").innerText =
-      parseInt(document.getElementById("streak").innerText) + 1;
-  }
+  loadCurrentStreak();
 }
 
 function refreshInfoTable() {
