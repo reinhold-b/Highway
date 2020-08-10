@@ -16,13 +16,17 @@ function setNewClicked(currentIndex) {
       projectListElements[1].id = "clickedd";
     }
   }
-  ipcRenderer.invoke(
-    "saveClickedd",
-    document.getElementById("clickedd").innerText
-  );
+  if (document.getElementById("clickedd")) {
+    ipcRenderer.invoke(
+      "saveClickedd",
+      document.getElementById("clickedd").innerText
+    );
+  }
+  refreshInfoTable();
 }
 
 function setInfoTitle() {
+  console.log(document.getElementById("todo-table").childNodes.length);
   if (getCurrentInfoTitleElement()) {
     getCurrentInfoTitleElement().innerText = getCurrentProjectName();
   } else {
@@ -66,7 +70,7 @@ function removeNoProReplacer() {
 }
 
 function setNoTaskReplacer(info) {
-  if (Array.from(info).length == 0) {
+  if (info && Array.from(info).length == 0) {
     var todoContainer = document.getElementById("todo-content");
 
     var taskReplacer = document.createElement("p");

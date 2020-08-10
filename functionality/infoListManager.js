@@ -50,14 +50,20 @@ function refreshInfoTable() {
       var infoTable = document.getElementById("todo-info-table");
       var todoContent = document.getElementById("todo-content");
 
-      setInfoTitle();
+      if (todoContent.childNodes.length > 0) {
+        setInfoTitle();
+      }
       loadBarProgress();
       loadCurrentStreak();
       setNoTaskReplacer(info);
 
       infoTable.innerHTML = "";
       if (info) {
-        infoTitle.innerText = getCurrentProjectName();
+        try {
+          infoTitle.innerText = getCurrentProjectName();
+        } catch {
+          //pass
+        }
 
         for (let i of info) {
           var currentInfo = i;
@@ -90,8 +96,12 @@ function refreshInfoTable() {
       }
     });
   }
-  var projectName = getCurrentProjectName();
-  ipcRenderer.send("getInfo", projectName);
+  try {
+    var projectName = getCurrentProjectName();
+    ipcRenderer.send("getInfo", projectName);
+  } catch {
+    //pass
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
