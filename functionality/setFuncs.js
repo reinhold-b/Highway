@@ -1,4 +1,5 @@
 const NO_PRO_TEXT = "No projects yet :(";
+const NO_TASK_TEXT = "You haven't added any tasks yet...";
 
 function setNewClicked(currentIndex) {
   // when a project is deleted, there needs to b a new 'clickedd' list element
@@ -62,6 +63,27 @@ function removeNoProReplacer() {
   var replacer = document.getElementById("noPro");
 
   replacer.remove();
+}
+
+function setNoTaskReplacer(info) {
+  if (Array.from(info).length == 0) {
+    var todoContainer = document.getElementById("todo-content");
+
+    var taskReplacer = document.createElement("p");
+    taskReplacer.appendChild(document.createTextNode(NO_TASK_TEXT));
+    taskReplacer.classList.add("taskReplacer");
+    taskReplacer.id = "noTask";
+    removeNoTaskReplacer();
+    todoContainer.insertBefore(taskReplacer, todoContainer.childNodes[1]);
+  } else {
+    removeNoTaskReplacer();
+  }
+}
+
+function removeNoTaskReplacer() {
+  if (document.getElementById("noTask")) {
+    document.getElementById("noTask").remove();
+  }
 }
 
 module.exports = {

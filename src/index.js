@@ -5,10 +5,6 @@ const {
   fetchPreferenceScheme,
   fetchDefaultsSchema,
 } = require("../static/schemes/prefScheme");
-const {
-  loadCurrentStreak,
-  loadBarProgress,
-} = require("../ui/progressBarController");
 
 const schema = fetchPreferenceScheme();
 const defaults = fetchDefaultsSchema();
@@ -21,8 +17,6 @@ if (store.get("current_projects")) {
 } else {
   var current_projects = [];
 }
-
-// require('update-electron-app')() --> add when app is ready to ensure update
 
 // This function adds a new project to the store
 // It gets invoked by buttons.js when the { add button } is clicked

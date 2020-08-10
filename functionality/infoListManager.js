@@ -2,6 +2,7 @@ var setDELIVERYINFO = true;
 var newListener = true;
 
 function addNewInfo(text) {
+  removeNoTaskReplacer();
   var infoTable = document.getElementById("todo-info-table");
 
   var new_li = document.createElement("li");
@@ -33,6 +34,9 @@ function removeOne(node) {
   infoTable.removeChild(node);
 
   loadCurrentStreak();
+  if (infoTable.childNodes.length == 0) {
+    setNoTaskReplacer([]);
+  }
 }
 
 function refreshInfoTable() {
@@ -49,6 +53,7 @@ function refreshInfoTable() {
       setInfoTitle();
       loadBarProgress();
       loadCurrentStreak();
+      setNoTaskReplacer(info);
 
       infoTable.innerHTML = "";
       if (info) {
