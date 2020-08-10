@@ -1,5 +1,5 @@
 # Highway :zap:
-Highway is a super-lightweight, easy to use task manager, which lets you get things done without any unnecessary distractions!\
+Highway is a super-lightweight, easy to use task manager built with Electron, which lets you get things done without any unnecessary distractions!\
 Do you need a simple task manager for your projects, that doesn't distract you with unnecessary functions, is super easy to use and lightweight? Then try out Highway! Maybe you will like it, maybe not... :sweat_smile:
 
 ## Try it out!
