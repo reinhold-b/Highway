@@ -4,7 +4,7 @@ Do you need a simple task manager for your projects, that doesn't distract you w
 
 ## Next Release
 #### Implemented
-- The 'Highway' text in the top left is changed to a title, which tells you the current day
+- A title, which tells you the current day
 #### Planned
 - Search function
 - Archive, which stores finished tasks
