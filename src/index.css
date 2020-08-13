@@ -85,9 +85,6 @@ li,
 p {
   -webkit-user-select: none;
 }
-#text {
-  vertical-align: middle;
-}
 ::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
@@ -109,8 +106,7 @@ p {
   --progress-clr: #52796f;
 }
 body {
-  font-family: Inter, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
+  font-family: "Segoe UI";
   -webkit-font-smoothing: subpixel-antialiased !important;
   background-color: var(--dark-bg-color);
   width: 100vw;
@@ -153,7 +149,7 @@ body {
   float: left;
   padding: 0 0 0 1em;
   font-family: sans-serif;
-  font-weight: 700;
+  font-weight: 900;
 }
 #buttons #close,
 #buttons #maximize,
@@ -187,8 +183,8 @@ body {
 }
 #left-panel #container-left-panel-content #title {
   margin-top: 5vh;
-  font-family: Inter, Roboto, sans-serif;
-  font-weight: 800;
+  font-weight: 700;
+  font-size: 1.8rem;
 }
 #left-panel #container-left-panel-content #todo-table {
   height: 55vh;
@@ -208,6 +204,7 @@ body {
 }
 #left-panel #container-left-panel-content #todo-table .todo-item {
   font-weight: 600;
+  font-size: 16px;
   margin-bottom: 10%;
   padding: 0;
   transition: opacity 0.1s ease-in-out;
@@ -244,7 +241,13 @@ body {
   z-index: 0;
 }
 .flexflex {
+  position: fixed;
   display: flex;
+  min-height: 35px;
+  max-height: 39px;
+  top: 88%;
+  bottom: 6%;
+  margin-right: 20px;
 }
 #addBtn {
   font-size: 2rem;
@@ -266,13 +269,11 @@ body {
   background-color: var(--input-form-bg);
   color: #fff;
   border: none;
-  border-radius: 0.8rem;
-  margin: 2% 0 2% 0;
+  border-radius: 1rem;
   padding: 3.5% 3.5% 3.5% 3.5%;
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s;
-  width: 80%;
-  min-height: 1.5rem;
-  max-height: 1.6rem;
+  margin-right: 1%;
+  max-width: 19vw;
 }
 #newProjectInput:hover {
   background-color: var(--input-bg-hover);
@@ -282,7 +283,6 @@ body {
   outline-style: none;
 }
 #right-panel-todo-info {
-  font-family: Inter !important, sans-serif;
   font-weight: 600;
   float: right;
   height: 100vh;
@@ -346,6 +346,8 @@ body {
   right: -5%;
   top: 88%;
   bottom: 6%;
+  min-height: 35px;
+  max-height: 39px;
   z-index: 10;
   border-radius: 0.8rem;
   border: none;
@@ -374,6 +376,8 @@ body {
   color: #fff;
 }
 #infoAddBtn {
+  min-height: 35px;
+  max-height: 35px;
   border: 2px solid #457b9d;
   border-radius: 1.3rem;
   outline-style: none;

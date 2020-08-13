@@ -45,3 +45,9 @@ svg {
   content: url("../svg/goal.svg");
   vertical-align: -3px;
 }
+
+.car {
+  content: url("../svg/car.svg");
+  vertical-align: -3px;
+  margin-left: 10px;
+}

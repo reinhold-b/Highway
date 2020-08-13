@@ -2,6 +2,14 @@
 Highway is a super-lightweight, easy to use task manager built with Electron, which lets you get things done without any unnecessary distractions!\
 Do you need a simple task manager for your projects, that doesn't distract you with unnecessary functions, is super easy to use and lightweight? Then try out Highway! Maybe you will like it, maybe not... :sweat_smile:
 
+## Next Release
+#### Implemented
+- A title, which tells you the current day
+#### Planned
+- Search function
+- Archive, which stores finished tasks
+
+
 ## Try it out!
 Get the latest version of Highway [here](https://github.com/reinhold-b/Highway/releases).\
 Currently Highway is only available for Windows, but this will change soon!

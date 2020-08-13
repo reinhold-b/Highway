@@ -39,6 +39,10 @@ function getDayDifference(savedDate) {
   return date.getDate() - parseInt(savedDate.slice(0, 2));
 }
 
+function getDay() {
+  return date.toLocaleString("en-us", { weekday: "short" });
+}
+
 // FETCH BAR DATA
 
 // function getProgressFromStore() {

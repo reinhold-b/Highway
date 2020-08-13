@@ -18,6 +18,11 @@ function setClickedAtOpenWindow() {
 }
 
 ipcRenderer.once("fillProjectList", function (event, arr) {
+  var title = document.getElementById("title");
+  var span = document.createElement("span");
+  span.classList.add("car");
+  title.innerText = getDay();
+  title.appendChild(span);
   for (let i of arr) {
     var newProjectName = i;
 
