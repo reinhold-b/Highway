@@ -135,6 +135,7 @@ const createWindow = () => {
   mainWindow.webContents.on("did-finish-load", () => {
     fresh_project_list = store.get("current_projects");
 
+    mainWindow.webContents.send("setDay");
     if (fresh_project_list.length != 0) {
       mainWindow.webContents.send("fillProjectList", fresh_project_list);
     } else {
