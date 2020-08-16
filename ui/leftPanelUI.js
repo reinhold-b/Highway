@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.target.parentNode.classList.add("removing"); // new class name here
 
       setProgressFromProjects(e.target.parentNode.innerText);
+      saveToArchiveFromProjects(e.target.parentNode.innerText);
 
       if (getProjectList().children.length == 1) {
         setNoProjectReplacer();
@@ -111,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             e.target.id = "clickedd";
           }
+          buttonsAndInputs(true);
           // save the current clickedd, so when you restart the app,
           // it focuses on the last watched element == clickedd
           ipcRenderer.invoke(

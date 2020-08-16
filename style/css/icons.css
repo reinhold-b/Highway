@@ -51,3 +51,33 @@ svg {
   vertical-align: -3px;
   margin-left: 10px;
 }
+
+.magnifier {
+  content: url("../svg/magnifier.svg");
+  vertical-align: -3px;
+}
+
+.speed {
+  content: url("../svg/speed.svg");
+  vertical-align: -2px;
+}
+
+.circle {
+  content: url("../svg/circle.svg");
+  vertical-align: 4.5px;
+  margin-left: 7px;
+}
+
+.archive {
+  content: url("../svg/archive.svg");
+  vertical-align: -3px;
+}
+
+.archive-done {
+  content: url("../svg/archive_done.svg");
+  display: inline;
+}
+
+.return {
+  content: url("../svg/return.svg");
+}

@@ -114,7 +114,13 @@ document.addEventListener("DOMContentLoaded", function () {
           if (!e.target.childNodes[0].checked) {
             e.target.childNodes[0].checked = true;
             var values = [getCurrentProjectName(), e.target.innerText];
+            var archValues = [
+              getCurrentProjectName(),
+              e.target.innerText,
+              getArchiveDate(),
+            ];
             ipcRenderer.invoke("removeInfo", values);
+            ipcRenderer.invoke("addToArchive", archValues);
 
             e.target.classList.add("removingInfo");
 

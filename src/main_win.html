@@ -52,7 +52,7 @@
     <div id="left-panel">
 
       <div id="container-left-panel-content">
-        <h2 id="title"><span class="car"></span></h2>
+        <h2 id="title"></h2>
         
 
         <ul id="todo-table">
@@ -70,8 +70,11 @@
 
     <div id="right-panel-todo-info">
       <div id="topMenu">
+        <button id="archiveButton" title="Archive"><span class="archive"></span></button>
+        <button id="searchButton" title="Search"><span class="magnifier"></span></button>
+        <input placeholder="Search..." id="searchPanel" type="text" spellcheck="false">
         <p id="streak"></p>
-        <p>mph</p>
+        <p title="Productivity Speed"><span class="speed"></span></p>
         <progress value="0" max="5" id="dailyProgress">
       </div>
       <div id="todo-content">

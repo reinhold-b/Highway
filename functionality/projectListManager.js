@@ -19,10 +19,8 @@ function setClickedAtOpenWindow() {
 
 ipcRenderer.once("setDay", function () {
   var title = document.getElementById("title");
-  var span = document.createElement("span");
-  span.classList.add("car");
-  title.innerText = getDay();
-  title.appendChild(span);
+  title.title = getDay("long");
+  title.innerText = `${getDay("short")}, ${getDate()}.`;
 });
 
 ipcRenderer.once("fillProjectList", function (event, arr) {

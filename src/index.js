@@ -4,11 +4,18 @@ const Store = require("electron-store");
 const {
   fetchPreferenceScheme,
   fetchDefaultsSchema,
+  fetchADefaults,
 } = require("../static/schemes/prefScheme");
+const { arch } = require("os");
 
 const schema = fetchPreferenceScheme();
 const defaults = fetchDefaultsSchema();
+const archiveDefaults = fetchADefaults();
 const store = new Store({ defaults, schema });
+const archive = new Store({
+  name: "archive",
+  defaults: archiveDefaults,
+});
 
 // Create the current_projects array
 // Fetches it from store if available else defines it []
@@ -79,9 +86,28 @@ ipcMain.handle("saveClickedd", (event, clickeddName) => {
   store.set("savedClickedd", clickeddName);
 });
 
+ipcMain.handle("addToArchive", (event, values) => {
+  var day = values[2];
+  console.log(day);
+  var archivedDays = archive.get("archivedDays");
+  if (Object.keys(archivedDays).includes(day)) {
+    var archiveArrDay = archivedDays[day];
+    archiveArrDay.push(values[1]);
+    archive.set(`archivedDays.${day}`, archiveArrDay);
+  } else {
+    archive.set("initDayDiff", parseInt(archive.get("initDayDiff")) + 1);
+    archivedDays[day] = [values[1]];
+    archive.set("archivedDays", archivedDays);
+  }
+});
+
 // return info for project to { rightPanelUI.js }
 ipcMain.on("getInfo", (event, projectName) => {
   event.reply("deliveryInfo", store.get(projectName));
+});
+
+ipcMain.on("getInfoA", (event, projectName) => {
+  event.reply("deliveryInfoA", store.get(projectName));
 });
 
 ipcMain.on("getProjectInfoLength", (event, projectName) => {
@@ -97,12 +123,35 @@ ipcMain.on("getStreakFromStore", (event) => {
   event.reply("streakDelivery", store.get("currentStreak"));
 });
 
+ipcMain.on("getArchive", (event) => {
+  event.reply("archiveDelivery", archive.get("archivedDays"));
+});
+
 ipcMain.on("isThereSavedClickedd", (event) => {
   if (store.has("savedClickedd")) {
     event.reply("isThereSavedClickeddResponse", store.get("savedClickedd"));
   } else {
     event.reply("isThereSavedClickeddResponse", false);
   }
+});
+
+ipcMain.on("searchProject", (event, searchKey) => {
+  const projectList = Array.from(store.get("current_projects"));
+  const archivedDays = archive.get("archivedDays");
+  var response = [];
+  for (let name of projectList) {
+    if (Array.from(store.get(name)).join().toLowerCase().includes(searchKey)) {
+      response.push(projectList.indexOf(name));
+    } else if (name.toLowerCase().includes(searchKey)) {
+      response.push(projectList.indexOf(name));
+    }
+  }
+  for (let day of Object.keys(archivedDays)) {
+    if (archivedDays[day].map((v) => v.toLowerCase()).includes(searchKey)) {
+      response.push(-2);
+    }
+  }
+  event.reply("queryReply", response);
 });
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -131,6 +180,11 @@ const createWindow = () => {
   // and load the index.html of the app.
   const path = require("path");
   mainWindow.loadFile(path.join(__dirname, "main_win.html"));
+
+  if (archive.get("initDayDiff") >= 31) {
+    archive.set("initDayDiff", 0);
+    archive.set("archivedDays", {});
+  }
 
   mainWindow.webContents.on("did-finish-load", () => {
     fresh_project_list = store.get("current_projects");

@@ -25,13 +25,61 @@ function setNewClicked(currentIndex) {
   refreshInfoTable();
 }
 
+function forceSetClicked(index) {
+  var projectListElements = document
+    .getElementById("todo-table")
+    .getElementsByClassName("todo-item");
+  document.getElementById("clickedd").id = "";
+  projectListElements[index].id = "clickedd";
+  refreshInfoTable();
+}
+
+function setBlinkFoundInSearch(indexArr) {
+  var toRemoveClass = [];
+  var projectListElements = document
+    .getElementById("todo-table")
+    .getElementsByClassName("todo-item");
+  if (indexArr.includes(-2)) {
+    document.getElementById("archiveButton").classList.add("blink");
+    indexArr.splice(indexArr.indexOf(-2), 1);
+    toRemoveClass.push(document.getElementById("archiveButton"));
+  }
+  for (let index of indexArr) {
+    projectListElements[index].classList.add("blink");
+    toRemoveClass.push(projectListElements[index]);
+  }
+  setTimeout(() => {
+    for (let ele of toRemoveClass) {
+      ele.classList.remove("blink");
+    }
+  }, 2000);
+}
+
+function setNotFound() {
+  var text = document.createElement("p");
+  text.appendChild(document.createTextNode("Nothing found..."));
+  text.id = "nothingFound";
+  document.getElementById("topMenu").prepend(text);
+  setTimeout(() => document.getElementById("nothingFound").remove(), 2500);
+}
+
 function setInfoTitle() {
-  console.log(document.getElementById("todo-table").childNodes.length);
   if (getCurrentInfoTitleElement()) {
     getCurrentInfoTitleElement().innerText = getCurrentProjectName();
   } else {
     var infoTitle = document.createElement("h2");
     infoTitle.appendChild(document.createTextNode(getCurrentProjectName()));
+    infoTitle.id = "infoTitle";
+    document.getElementById("todo-content").prepend(infoTitle);
+  }
+}
+
+function setArchiveTitle() {
+  if (getCurrentInfoTitleElement()) {
+    getCurrentInfoTitleElement().innerText = "Archive";
+  } else {
+    var infoTitle = document.createElement("h2");
+    infoTitle.appendChild(document.createTextNode("Archive"));
     infoTitle.id = "infoTitle";
     document.getElementById("todo-content").prepend(infoTitle);
   }

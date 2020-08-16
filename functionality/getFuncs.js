@@ -25,22 +25,38 @@ function getBarMaximum() {
 
 // TIME DATE ....
 
-const date = new Date();
+const datee = new Date();
 
 function getDateStamp() {
   var stamp =
-    String(date.getDate()) +
-    String(date.getMonth()) +
-    String(date.getFullYear());
+    String(datee.getDate()) +
+    String(datee.getMonth()) +
+    String(datee.getFullYear());
   return stamp;
 }
 
 function getDayDifference(savedDate) {
-  return date.getDate() - parseInt(savedDate.slice(0, 2));
+  return datee.getDate() - parseInt(savedDate.slice(0, 2));
 }
 
-function getDay() {
-  return date.toLocaleString("en-us", { weekday: "short" });
+function getDay(length) {
+  return datee.toLocaleString(navigator.language, { weekday: length });
+}
+
+function getDate() {
+  return datee.getDate();
+}
+
+function getArchiveDate() {
+  var options = {
+    weekday: "long",
+    year: "numeric",
+    month: "2-digit",
+    day: "numeric",
+  };
+  return datee
+    .toLocaleDateString(navigator.language, options)
+    .replace(/\./g, "-");
 }
 
 // FETCH BAR DATA
@@ -66,4 +82,5 @@ module.exports = {
   getInfoTable,
   getProjectList,
   getNoProReplacer,
+  getArchiveDate,
 };

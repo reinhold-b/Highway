@@ -63,6 +63,52 @@
     opacity: 0.4;
   }
 }
+@keyframes searchButtonAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+@keyframes appearAndBlink {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  75% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0.4;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+.blink {
+  animation: blink 2s !important;
+  color: navy;
+}
 .replacer {
   text-align: center;
   opacity: 0.4;
@@ -84,6 +130,9 @@ h2,
 li,
 p {
   -webkit-user-select: none;
+}
+#title {
+  opacity: 0.6;
 }
 ::placeholder {
   color: rgba(255, 255, 255, 0.5);
@@ -207,7 +256,7 @@ body {
   font-size: 16px;
   margin-bottom: 10%;
   padding: 0;
-  transition: opacity 0.1s ease-in-out;
+  transition: opacity 0.1s ease-in-out, color 0.2s ease-in-out;
   opacity: 0.4;
   animation: todoItemAppear 0.3s;
 }
@@ -335,7 +384,7 @@ body {
 #infoTitle {
   font-weight: 700;
   padding: 17vh 10% 3vh 10%;
-  margin: 3%;
+  margin: 5vh 3% 3% 3%;
 }
 #infoTitleDiv {
   display: flex;
@@ -395,8 +444,55 @@ body {
   margin: 3rem 5% 1rem 1rem;
   align-items: center;
 }
+#archiveButton {
+  outline: none;
+  border: none;
+  opacity: 0.5;
+  background-color: inherit;
+  margin-right: 7px;
+  animation: searchButtonAppear 0.7s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+#archiveButton:hover {
+  opacity: 1;
+}
+#searchButton {
+  outline: none;
+  background-color: inherit;
+  border: none;
+  opacity: 0.5;
+  margin-right: 5px;
+  animation: searchButtonAppear 0.7s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+#searchButton:hover {
+  opacity: 1;
+}
+#searchPanel {
+  border: none;
+  outline: none;
+  color: var(--bright-font-color);
+  min-width: 9vw;
+  max-width: 12vw;
+  border-bottom: 1px solid var(--bright-font-color);
+  margin-right: 30px;
+  font-family: Inter;
+  display: none;
+}
+#searchPanel::placeholder {
+  color: var(--bright-font-color) !important;
+  font-weight: 600;
+  opacity: 0.5;
+}
+#nothingFound {
+  animation: appearAndBlink 2.5s ease-in-out;
+  margin-right: 10px;
+  font-size: 0.8rem;
+  color: var(--dark-font-color);
+}
 #streak {
   margin-right: 0.3rem;
+  margin-left: 12px;
 }
 progress[value] {
   -webkit-appearance: none;
@@ -467,4 +563,26 @@ progress[value]::-webkit-progress-value {
 }
 .editButton:hover {
   opacity: 0.8 !important;
+}
+
+.archiveElement {
+  opacity: 0.7;
+  font-family: Inter;
+  color: var(--dark-font-color);
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+h4 {
+  font-family: Inter;
+}
+
+.disabled {
+  opacity: 0.55 !important;
+}
+
+.disabled:hover {
+  opacity: 0.55 !important;
 }
