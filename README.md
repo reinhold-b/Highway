@@ -1,6 +1,6 @@
 # Highway :zap:
 
-To-Dp app built with Electron (This is my first app built with it)
+To-Do app built with Electron (This is my first app built with it)
 
 ## Try it out!
 
